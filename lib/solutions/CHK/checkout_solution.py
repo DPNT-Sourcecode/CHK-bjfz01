@@ -11,7 +11,7 @@ items = {
 }
 
 
-def get_remainder(value, divisor) -> int | int:
+def get_remainder(value, divisor):
     if value == 0:
         return 0, 0
     return value // divisor, value % divisor
@@ -54,3 +54,4 @@ def checkout(skus):
         return total - discount
     else:
         return -1
+
