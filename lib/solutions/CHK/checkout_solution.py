@@ -2,6 +2,22 @@
 
 # noinspection PyUnusedLocal
 # skus = unicode string
+def discount_a(skus) -> int:
+    return 0
+
+
+def discount_b(skus) -> int:
+    return 0
+
+
+def discount_e(skus) -> int:
+    return 0
+
+
+def apply_offers(skus) -> int:
+    return 0
+
+
 def checkout(skus):
     if len(skus) == 0:
         return 0
