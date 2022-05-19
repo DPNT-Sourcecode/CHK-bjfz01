@@ -44,7 +44,7 @@ def apply_offers(skus) -> int:
 def checkout(skus):
     if len(skus) == 0:
         return 0
-    if all(c in "ABCDE" for c in skus):
+    if all(c in items.keys() for c in skus):
         total = 0
         for c in skus:
             total += items[c]
@@ -52,4 +52,3 @@ def checkout(skus):
         return total - discount
     else:
         return -1
-
