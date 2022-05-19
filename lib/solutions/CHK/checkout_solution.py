@@ -13,7 +13,3 @@ def checkout(skus):
         return a + b + c + d
     else:
         return -1
-
-
-
-
