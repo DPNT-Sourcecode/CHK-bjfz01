@@ -31,12 +31,14 @@ def discount_b_e(skus) -> int:
     res, rem = get_remainder(skus.count('B'), 2)
     discount_b = res * 15
 
-    b_count = skus.count('B')
-    discount_e = 0
-    if b_count > 0:
-        discount_e = items['B'] * b_count
+    discount = discount_b
+    if skus.find('E') != -1:
+        b_count = skus.count('B')
+        discount_e = 0
+        if b_count > 0:
+            discount_e = items['B'] * b_count
 
-    discount = discount_b if discount_b > discount_e else discount_e
+        discount = discount_b if discount_b > discount_e else discount_e
     return discount
 
 
@@ -55,3 +57,4 @@ def checkout(skus):
         return total - discount
     else:
         return -1
+
