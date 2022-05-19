@@ -7,7 +7,8 @@ items = {
     'B': 30,
     'C': 20,
     'D': 15,
-    'E': 40
+    'E': 40,
+    'F': 10
 }
 
 
@@ -44,8 +45,14 @@ def discount_b_e(skus) -> int:
     return discount
 
 
+def discount_f(skus) -> int:
+    f_count = skus.count('F')
+    num_free_f = f_count // 2
+    return items['F'] * num_free_f
+
+
 def apply_offers(skus) -> int:
-    return discount_a(skus) + discount_b_e(skus)
+    return discount_a(skus) + discount_b_e(skus) + discount_f(skus)
 
 
 def checkout(skus):
