@@ -29,12 +29,14 @@ def discount_a(skus) -> int:
 
 def discount_b(skus) -> int:
     res, rem = get_remainder(skus.count('B'), 2)
-    return res * 15
+    discount = res * 15
+    return discount
 
 
 def discount_e(skus) -> int:
     res, rem = get_remainder(skus.count('E'), 2)
-    return res * items['B']
+    discount = res * items['B']
+    return discount
 
 
 def apply_offers(skus) -> int:
