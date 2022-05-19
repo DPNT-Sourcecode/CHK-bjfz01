@@ -28,16 +28,18 @@ def discount_a(skus) -> int:
 
 
 def discount_b_e(skus) -> int:
-    res, rem = get_remainder(skus.count('B'), 2)
-    discount_b = res * 15
+    result, rem = remainder(skus.count('B'), 2)
+    discount_b = result * 15
 
-    discount = discount_b
+    discount_e = 0
+    b_count = skus.count('B')
     if skus.count('E') >= 2:
-        b_count = skus.count('B')
-        discount_e = 0
         if b_count > 0:
             discount_e = items['B'] * (skus.count('E') // 2)
 
+    if b_count > 2:
+        discount = discount_b + discount_e
+    else:
         discount = discount_b if discount_b > discount_e else discount_e
     return discount
 
