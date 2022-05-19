@@ -5,5 +5,5 @@
 def checkout(skus):
     if len(skus) == 0:
         return -1
-    if 
+
 
