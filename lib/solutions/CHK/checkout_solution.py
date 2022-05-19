@@ -18,15 +18,23 @@ def get_remainder(value, divisor) -> int | int:
 
 
 def discount_a(skus) -> int:
-    return 0
+    res, rem = get_remainder(skus.count('A'), 5)
+    discount = res * items['A']
+
+    res, rem = get_remainder(rem, 3)
+    discount += res * 20
+
+    return discount
 
 
 def discount_b(skus) -> int:
-    return 0
+    res, rem = get_remainder(skus.count('B'), 2)
+    return res * 15
 
 
 def discount_e(skus) -> int:
-    return 0
+    res, rem = get_remainder(skus.count('E'), 2)
+    return res * items['B']
 
 
 def apply_offers(skus) -> int:
@@ -36,11 +44,7 @@ def apply_offers(skus) -> int:
 def checkout(skus):
     if len(skus) == 0:
         return 0
-    if all(c in "ABCD" for c in skus):
-        # a = skus.count('A') * 50 if 0 < skus.count('A') < 3 else (skus.count('A') // 3 * 130) + (skus.count('A') % 3 * 50)
-        # b = skus.count('B') * 30 if 0 < skus.count('B') < 2 else (skus.count('B') // 2 * 45) + (skus.count('B') % 2 * 30)
-        # c = skus.count('C') * 20
-        # d = skus.count('D') * 15
+    if all(c in "ABCDE" for c in skus):
         total = 0
         for c in skus:
             total += items[c]
@@ -48,3 +52,4 @@ def checkout(skus):
         return total - discount
     else:
         return -1
+
