@@ -27,22 +27,20 @@ def discount_a(skus) -> int:
     return discount
 
 
-def discount_b(skus) -> int:
+def discount_b_e(skus) -> int:
     res, rem = get_remainder(skus.count('B'), 2)
-    discount = res * 15
-    return discount
+    discount_b = res * 15
 
+    b_count = skus.count('B')
+    if b_count > 0:
+        discount_e = items['B'] * b_count
 
-def discount_e(skus) -> int:
-    res, rem = get_remainder(skus.count('E'), 2)
-    discount = 0
-    if skus.find('B') != -1:
-        discount = res * items['B']
+    discount = discount_b if discount_b > discount_e else discount_e
     return discount
 
 
 def apply_offers(skus) -> int:
-    return discount_a(skus) + discount_b(skus) + discount_e(skus)
+    return discount_a(skus) + discount_b_e(skus)
 
 
 def checkout(skus):
