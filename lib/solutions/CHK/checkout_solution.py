@@ -32,11 +32,11 @@ def discount_b_e(skus) -> int:
     discount_b = res * 15
 
     discount = discount_b
-    if skus.count('E') > 2:
+    if skus.count('E') >= 2:
         b_count = skus.count('B')
         discount_e = 0
         if b_count > 0:
-            discount_e = items['B'] * b_count
+            discount_e = items['B'] * (skus.count('E') // 2)
 
         discount = discount_b if discount_b > discount_e else discount_e
     return discount
@@ -57,5 +57,6 @@ def checkout(skus):
         return total - discount
     else:
         return -1
+
 
 
