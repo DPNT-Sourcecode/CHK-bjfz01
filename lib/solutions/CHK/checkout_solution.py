@@ -52,7 +52,8 @@ def discount_f(skus) -> int:
 
 
 def apply_offers(skus) -> int:
-    return discount_a(skus) + discount_b_e(skus) + discount_f(skus)
+    discount = discount_a(skus) + discount_b_e(skus) + discount_f(skus)
+    return discount
 
 
 def checkout(skus):
@@ -66,3 +67,4 @@ def checkout(skus):
         return total - discount
     else:
         return -1
+
