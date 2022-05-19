@@ -47,7 +47,7 @@ def discount_b_e(skus) -> int:
 
 def discount_f(skus) -> int:
     f_count = skus.count('F')
-    num_free_f = f_count // 2
+    num_free_f = f_count // 3
     return items['F'] * num_free_f
 
 
@@ -67,4 +67,5 @@ def checkout(skus):
         return total - discount
     else:
         return -1
+
 
