@@ -83,7 +83,7 @@ def discount_h(skus) -> int:
 
 def discount_k(skus) -> int:
     res, _ = get_remainder(skus.count('K'), 2)
-    return res * 30
+    return res * 10
 
 
 def discount_n_m(skus) -> int:
