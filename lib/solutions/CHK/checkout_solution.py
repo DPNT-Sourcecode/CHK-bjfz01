@@ -73,10 +73,10 @@ def discount_f(skus) -> int:
 
 def discount_h(skus) -> int:
     res, rem = get_remainder(skus.count('H'), 10)
-    discount = res * 5
+    discount = res * 20
 
     res, rem = get_remainder(rem, 5)
-    discount += res * 20
+    discount += res * 5
 
     return discount
 
@@ -148,6 +148,7 @@ def checkout(skus):
         return total - discount
     else:
         return -1
+
 
 
 
