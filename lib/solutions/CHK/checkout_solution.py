@@ -71,6 +71,16 @@ def discount_f(skus) -> int:
     return items['F'] * num_free_f
 
 
+def discount_h(skus) -> int:
+    res, rem = get_remainder(skus.count('H'), 10)
+    discount = res * 5
+
+    res, rem = get_remainder(rem, 5)
+    discount += res * 20
+
+    return discount
+
+
 def discount_k(skus) -> int:
     res, _ = get_remainder(skus.count('K'), 2)
     return res * 30
@@ -123,7 +133,7 @@ def discount_v(skus) -> int:
 
 
 def apply_offers(skus) -> int:
-    discount = discount_a(skus) + discount_b_e(skus) + discount_f(skus) + discount_k(skus) + discount_n_m(skus) + discount_p(skus) + discount_q(skus) + discount_r_q(skus) + discount_u(skus) + discount_v(skus)
+    discount = discount_a(skus) + discount_b_e(skus) + discount_f(skus) + discount_h(skus) + discount_k(skus) + discount_n_m(skus) + discount_p(skus) + discount_q(skus) + discount_r_q(skus) + discount_u(skus) + discount_v(skus)
     return discount
 
 
@@ -138,6 +148,7 @@ def checkout(skus):
         return total - discount
     else:
         return -1
+
 
 
 
