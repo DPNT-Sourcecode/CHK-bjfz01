@@ -21,9 +21,14 @@ items = {
     'P': 50,
     'Q': 30,
     'R': 50,
+    'S': 20,
+    'T': 20,
     'U': 40,
     'V': 50,
-    'W': 20
+    'W': 20,
+    'X': 17,
+    'Y': 20,
+    'Z': 21
 }
 
 any_three_items = {
@@ -169,13 +174,14 @@ def any_three_offer(skus):
 def checkout(skus):
     if len(skus) == 0:
         return 0
-    if all(c in items.keys() or any_three_items.keys() for c in skus):
+    if all(c in items.keys() for c in skus):
         total = 0
         for c in skus:
-            if c in items.keys():
+            if c not in any_three_items.keys():
                 total += items[c]
         discount = apply_offers(skus)
         sum_any_three = any_three_offer(skus)
         return total - discount + sum_any_three
     else:
         return -1
+
