@@ -21,16 +21,18 @@ items = {
     'P': 50,
     'Q': 30,
     'R': 50,
-    'S': 30,
-    'T': 20,
     'U': 40,
     'V': 50,
-    'W': 20,
-    'X': 90,
-    'Y': 10,
-    'Z': 50
+    'W': 20
 }
 
+any_three_items = {
+    'S': 20,
+    'T': 20,
+    'X': 17,
+    'Y': 20,
+    'Z': 21
+}
 
 def get_remainder(value, divisor):
     if value == 0:
@@ -149,10 +151,11 @@ def apply_offers(skus) -> int:
 def checkout(skus):
     if len(skus) == 0:
         return 0
-    if all(c in items.keys() for c in skus):
+    if all(c in items.keys() or any_three_items.keys() for c in skus):
         total = 0
         for c in skus:
-            total += items[c]
+            if c in items.keys():
+                total += items[c]
         discount = apply_offers(skus)
         return total - discount
     else:
