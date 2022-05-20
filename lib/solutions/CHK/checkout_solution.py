@@ -157,4 +157,3 @@ def checkout(skus):
         return total - discount
     else:
         return -1
-
