@@ -34,6 +34,7 @@ any_three_items = {
     'Z': 21
 }
 
+
 def get_remainder(value, divisor):
     if value == 0:
         return 0, 0
@@ -148,6 +149,23 @@ def apply_offers(skus) -> int:
     return discount
 
 
+def any_three_offer(skus):
+    eligible_item_prices = []
+    for c in skus:
+        if c in any_three_items.keys():
+            eligible_item_prices.append(any_three_items[c])
+    eligible_item_prices.sort(reverse=True)
+
+    total = 0
+    while len(eligible_item_prices) > 2:
+        total += 45
+        temp = eligible_item_prices[3:]
+        eligible_item_prices = temp
+
+    total += sum(eligible_item_prices[:2])
+    return total
+
+
 def checkout(skus):
     if len(skus) == 0:
         return 0
@@ -157,6 +175,7 @@ def checkout(skus):
             if c in items.keys():
                 total += items[c]
         discount = apply_offers(skus)
-        return total - discount
+        sum_any_three = any_three_offer(skus)
+        return total - discount + sum_any_three
     else:
         return -1
